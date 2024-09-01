@@ -21,6 +21,7 @@ const profileSchema = z.object({
   linkedin: z.string().optional(),
   github: z.string().optional(),
   bio: z.string().optional(),
+  major: z.string().min(1, "Major is required"),
 });
 
 type ProfileData = z.infer<typeof profileSchema>;
@@ -34,6 +35,7 @@ export default function EditProfile() {
     classyear: "",
     linkedin: "",
     github: "",
+    major: "",
     bio: "",
   });
 
@@ -140,6 +142,18 @@ export default function EditProfile() {
                 placeholder="Freshman - Class of 2028"
                 type="text"
                 value={profileData.classyear}
+                onChange={handleChange}
+              />
+            </LabelInputContainer>
+
+            <LabelInputContainer className="mb-4">
+              <Label htmlFor="major">Major</Label>
+              <Input
+                id="major"
+                name="major"
+                placeholder="Computer Science"
+                type="text"
+                value={profileData.major}
                 onChange={handleChange}
               />
             </LabelInputContainer>

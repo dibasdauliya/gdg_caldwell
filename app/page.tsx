@@ -8,13 +8,14 @@ import { ClockIcon, MapPin } from "lucide-react";
 import UpcomingCard from "./components/event-cards/upcoming";
 import HeroSection from "./components/hero";
 import { Boxes } from "@/components/ui/background-boxes";
+import Footer from "./components/footer";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
 
-      <section className="p-16 mx-auto bg-slate-100 bg-grid-black/[0.2] relative">
+      <section className="p-16 mx-auto bg-slate-100 bg-grid-black/[0.1] relative">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
         <h2 className="font-bold text-3xl text-center relative">
@@ -44,22 +45,9 @@ export default function Home() {
           <UpcomingCard />
           <UpcomingCard />
         </Container>
-
-        <footer className="mt-12 text-white relative z-20">
-          <p className="text-sm text-center">
-            Developed by{" "}
-            <a
-              href="http://linkedin.com/in/dibasdauliya/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
-              Dibas Dauliya
-            </a>
-            .
-          </p>
-        </footer>
       </section>
+
+      <Footer />
     </>
   );
 }

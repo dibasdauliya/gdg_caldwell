@@ -34,3 +34,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+Remove trace
+
+# Step 1: Install git filter-repo
+
+brew install git-filter-repo
+
+# Step 2: Clone the repository
+
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+
+# Step 3: Run git filter-repo to remove .env
+
+git filter-repo --path .env --invert-paths
+
+# Step 4: Force push the changes
+
+git push origin --force --all
+git push origin --force --tags

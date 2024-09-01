@@ -26,7 +26,13 @@ export default function Header() {
               <Link href="/upcomming-events">Upcomming Events</Link>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
+              <Link href="/apply">Apply</Link>
+            </li>
+            <li>
+              <Link href="/team">Our Team</Link>
+            </li>
+            <li>
+              <Link href="/profile/edit">Profile</Link>
             </li>
           </ul>
         </nav>
