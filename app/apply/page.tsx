@@ -137,6 +137,7 @@ export default function ApplyPage() {
                 </SelectContent>
               </Select>
             </LabelInputContainer>
+
             <LabelInputContainer>
               <Label htmlFor="allQues" className="leading-normal">
                 Why do you want to join GDG Caldwell? What is your experience
@@ -151,6 +152,7 @@ export default function ApplyPage() {
                 onChange={(e) => handleChange(e, "allQues")}
               />
             </LabelInputContainer>
+
             {formData.position === "secretary" && (
               <LabelInputContainer>
                 <Label htmlFor="secretaryQues" className="leading-normal">
@@ -168,6 +170,7 @@ export default function ApplyPage() {
                 />
               </LabelInputContainer>
             )}
+
             <button
               type="submit"
               className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors"
