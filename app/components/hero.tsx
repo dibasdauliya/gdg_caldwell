@@ -37,7 +37,7 @@ export default function HeroSection() {
         </div>
 
         <p className="mt-4 font-normal text-base text-neutral-300 max-w-lg text-center mx-auto">
-          Join us if you are interested in learning more about technologies, and
+          Join us if you are interested in learning more about technologies and
           want to connect with other students who are passionate about
           technology.
         </p>
