@@ -32,7 +32,7 @@ export default function HeroSection() {
         <div className="flex gap-6 justify-center">
           <AnimatedTooltips />
           <small className="text-white mt-5">
-            <a href="">+ 66 others</a>
+            <a href="">+ TBD</a>
           </small>
         </div>
 

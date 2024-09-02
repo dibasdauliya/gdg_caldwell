@@ -1,16 +1,36 @@
-import { cn } from "@/lib/utils";
-import { Spotlight } from "@/components/ui/spotlight";
-import Image from "next/image";
-import { AnimatedTooltips } from "./components/tooltips";
-import { CardSpotlight } from "@/components/ui/card-spotlight";
 import Container from "./components/container";
-import { ClockIcon, MapPin } from "lucide-react";
 import UpcomingCard from "./components/event-cards/upcoming";
 import HeroSection from "./components/hero";
 import { Boxes } from "@/components/ui/background-boxes";
 import Footer from "./components/footer";
+import { client } from "@/sanity/lib/client";
+import { UpcomingEventType } from "@/sanity/schema-types";
 
-export default function Home() {
+async function getUpcomingEvents(): Promise<UpcomingEventType[]> {
+  const query = `*[_type == "upcomingEvents"]{
+  _id,
+  title,
+  eventDate,
+  startEndTime,
+  location,
+  registrationLink,
+  formID,
+  "content":content[0].children[0].text,
+  }
+  `;
+  const upcomingEvents = await client.fetch(query, {
+    headers: {
+      "Cache-Control": "no-cache",
+    },
+  });
+  return upcomingEvents;
+}
+
+export default async function Home() {
+  const upcomingEvents = await getUpcomingEvents();
+
+  // console.dir({ upcomingEvents }, { depth: null });
+
   return (
     <>
       <HeroSection />
@@ -23,10 +43,21 @@ export default function Home() {
         </h2>
 
         <Container className="mt-8 flex gap-4 flex-wrap justify-center relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
-          <UpcomingCard />
-          <UpcomingCard />
-          <UpcomingCard />
-          <UpcomingCard />
+          {upcomingEvents.map((event) => {
+            // console.log({ event });
+            return (
+              <UpcomingCard
+                key={event._id}
+                title={event.title}
+                content={event.content}
+                eventDate={event.eventDate}
+                startEndTime={event.startEndTime}
+                location={event.location}
+                registrationLink={event.registrationLink}
+                formId={event.formId}
+              />
+            );
+          })}
         </Container>
       </section>
 
@@ -40,10 +71,12 @@ export default function Home() {
         </h2>
 
         <Container className="mt-8 flex gap-4 flex-wrap justify-center relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
+          {/* coming soon */}
+          <h1 className="text-white">Coming soon...</h1>
+          {/* <UpcomingCard />
           <UpcomingCard />
           <UpcomingCard />
-          <UpcomingCard />
-          <UpcomingCard />
+          <UpcomingCard /> */}
         </Container>
       </section>
 
