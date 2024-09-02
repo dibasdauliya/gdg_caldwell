@@ -34,33 +34,35 @@ export const pastEvent = defineType({
     defineField({
       name: "eventDate",
       title: "Event is on",
-      type: "datetime",
+      type: "date",
+    }),
+    defineField({
+      name: "startEndTime",
+      title: "Start-End Time",
+      type: "string",
+      placeholder: "eg. 11:00 AM - 1:00 PM",
     }),
     defineField({
       name: "location",
-      title: "Location of the event (eg. Werner Lecture Hall, Room 101)",
+      title: "Location of the event",
+      placeholder: "eg. Werner Lecture Hall, Room 101",
       type: "string",
     }),
-    defineField({
-      name: "mainImage",
-      title: "Main image",
-      description:
-        'DO NOT use upload button. Use the "Select" button to select an image from the media library.',
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
+    // defineField({
+    //   name: "mainImage",
+    //   title: "Main image",
+    //   description:
+    //     '',
+    //   type: "image",
+    //   options: {
+    //     hotspot: true,
+    //   },
+    // }),
     defineField({
       name: "categories",
       title: "Categories",
       type: "array",
       of: [{ type: "reference", to: { type: "category" } }],
-    }),
-    defineField({
-      name: "publishedAt",
-      title: "Published at",
-      type: "datetime",
     }),
     defineField({
       name: "body",

@@ -45,8 +45,15 @@ export const upcomingEvent = defineType({
       type: "datetime",
     }),
     defineField({
+      name: "startEndTime",
+      title: "Start-End Time",
+      type: "string",
+      placeholder: "eg. 11:00 AM - 1:00 PM",
+    }),
+    defineField({
       name: "location",
-      title: "Location of the event (eg. Werner Lecture Hall, Room 101)",
+      title: "Location of the event",
+      placeholder: "eg. Werner Lecture Hall, Room 101",
       type: "string",
     }),
     defineField({
@@ -63,14 +70,14 @@ export const upcomingEvent = defineType({
         "This is the ID of the Google Form that is used to edit the form. This is not the ID of the form that is used to view the form.",
       type: "string",
     }),
-    defineField({
-      name: "mainImage",
-      title: "Main image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
+    // defineField({
+    //   name: "mainImage",
+    //   title: "Main image",
+    //   type: "image",
+    //   options: {
+    //     hotspot: true,
+    //   },
+    // }),
     defineField({
       name: "content",
       description: "Home page will only show the text of the first paragraph",
@@ -92,7 +99,6 @@ export const upcomingEvent = defineType({
             decorators: [
               { title: "Strong", value: "strong" },
               { title: "Emphasis", value: "em" },
-              // underline
               { title: "Underline", value: "underline" },
             ],
           },
