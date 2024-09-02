@@ -13,5 +13,12 @@ export default function SignOutButton() {
       });
   };
 
-  return <button onClick={handleSignOut}>SignOutButton</button>;
+  return (
+    <button
+      onClick={handleSignOut}
+      className="bg-gray-100 p-3 rounded-md hover:bg-gray-200 transition-colors font-semibold"
+    >
+      Sign Out
+    </button>
+  );
 }

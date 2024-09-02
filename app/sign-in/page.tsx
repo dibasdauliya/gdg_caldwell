@@ -17,18 +17,18 @@ export default function SignInPage() {
 
       <main>
         <Container>
-          <h1 className="text-3xl font-bold mt-8">
+          <h1 className="text-3xl font-bold my-8">
             Sign In using your Caldwell Email Address
           </h1>
-        </Container>
 
-        {userLoading ? (
-          <p>Loading...</p>
-        ) : user ? (
-          <SignOutButton />
-        ) : (
-          <SignInButton />
-        )}
+          {userLoading ? (
+            <p>Loading...</p>
+          ) : user ? (
+            <SignOutButton />
+          ) : (
+            <SignInButton />
+          )}
+        </Container>
       </main>
     </>
   );
