@@ -22,6 +22,8 @@ async function getUpcomingEvents(): Promise<UpcomingEventType[]> {
   return upcomingEvents;
 }
 
+export const revalidate = 3;
+
 export default async function Home() {
   const upcomingEvents = await getUpcomingEvents();
 
