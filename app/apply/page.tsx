@@ -90,10 +90,6 @@ export default function ApplyPage() {
 
   const position = watch("position");
 
-  if (!user && !userLoading) {
-    router.push(`/sign-in/?next=${location.pathname}`);
-    return null;
-  }
   const userQuery = user
     ? query(collection(firebaseDB, "users"), where("__name__", "==", user.uid))
     : null;
@@ -120,8 +116,7 @@ export default function ApplyPage() {
       userId: user?.uid,
       createdAt: new Date(),
     };
-    console.log(transformedData);
-    return;
+    // console.log(transformedData);
     try {
       await addDoc(collection(firebaseDB, "applications"), transformedData);
       //   toast.success("Application submitted successfully!");
@@ -131,6 +126,11 @@ export default function ApplyPage() {
       toast.error("Failed to submit application. Please try again.");
     }
   };
+
+  if (!user && !userLoading) {
+    router.push(`/sign-in/?next=${location.pathname}`);
+    return null;
+  }
 
   return (
     <>
@@ -151,7 +151,7 @@ export default function ApplyPage() {
               {!profile && "Loading..."}
               {profile?.firstname} {profile?.lastname}{" "}
               <small>
-                <Link href="/profile/edit" className="underline">
+                <Link href="/profile/edit" className="ml-1 underline">
                   edit
                 </Link>
               </small>
@@ -261,7 +261,7 @@ export default function ApplyPage() {
                   htmlFor="terms1"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  I'm generally available Wednesdays 11-1 PM.
+                  I&apos;m generally available Wednesdays 11-1 PM.
                 </label>
                 <p className="text-sm text-muted-foreground">
                   There are no classes scheduled during this time.
