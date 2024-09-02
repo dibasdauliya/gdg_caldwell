@@ -6,6 +6,8 @@ import Footer from "./components/footer";
 import { client } from "@/sanity/lib/client";
 import { UpcomingEventType } from "@/sanity/schema-types";
 
+export const revalidate = 0;
+
 async function getUpcomingEvents(): Promise<UpcomingEventType[]> {
   const query = `*[_type == "upcomingEvents"]{
   _id,
@@ -21,8 +23,6 @@ async function getUpcomingEvents(): Promise<UpcomingEventType[]> {
   const upcomingEvents = await client.fetch(query);
   return upcomingEvents;
 }
-
-export const revalidate = 3;
 
 export default async function Home() {
   const upcomingEvents = await getUpcomingEvents();
