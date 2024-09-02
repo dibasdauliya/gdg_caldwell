@@ -18,11 +18,7 @@ async function getUpcomingEvents(): Promise<UpcomingEventType[]> {
   "content":content[0].children[0].text,
   }
   `;
-  const upcomingEvents = await client.fetch(query, {
-    headers: {
-      "Cache-Control": "no-cache",
-    },
-  });
+  const upcomingEvents = await client.fetch(query);
   return upcomingEvents;
 }
 
