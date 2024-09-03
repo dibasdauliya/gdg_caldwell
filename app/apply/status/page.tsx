@@ -46,7 +46,7 @@ export default function Statuspage() {
               <CardSpotlight className="max-w-lg p-4 text-white relative z-30">
                 <div className="relative z-30">
                   <p className="mb-3">
-                    You haven't applied for any positions yet.
+                    You haven&apos;t applied for any positions yet.
                   </p>
                   <Link
                     className={buttonVariants({ variant: "secondary" })}
