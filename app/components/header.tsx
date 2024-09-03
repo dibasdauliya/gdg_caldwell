@@ -32,7 +32,7 @@ export default function Header() {
               <Link href="/team">Our Team</Link>
             </li>
             <li>
-              <Link href="/profile/edit">Profile</Link>
+              <Link href="/profile">Profile</Link>
             </li>
           </ul>
         </nav>
