@@ -8,6 +8,7 @@ import { auth, firebaseDB } from '../utils/db';
 import { useRouter } from 'next/navigation';
 import { ProfileData } from '../utils/types';
 import { doc, getDoc } from 'firebase/firestore';
+import Link from 'next/link';
 
 export default function MyProfile() {
     const [user, userLoading, userErr] = useAuthState(auth);
@@ -49,12 +50,18 @@ export default function MyProfile() {
   return (
     <SubPageLayout>
         <div className="relative z-30">
-        <h1 className="text-3xl font-bold mt-8">Profile
+        <header className="flex gap-2 flex-wrap justify-between items-center max-w-2xl mt-8">
+            <h1 className="text-3xl font-bold">Profile
 
             <small>
                 <button onClick={() => router.push('/profile/edit')} className="text-sm text-blue-500 hover:text-blue-600 ml-3">Edit</button>
             </small>
-        </h1>
+            </h1>
+
+            {/* <Link href='/apply' className={buttonVariants({ variant: "secondary" })}>
+            Apply
+            </Link> */}
+        </header>
 
             <div className="my-6 space-y-4">
             <div>
@@ -90,6 +97,12 @@ export default function MyProfile() {
             <p className="mt-1 text-sm text-gray-900">{profileData.bio}</p>
             </div>
             </div>
+
+            <Link href='/apply' 
+            className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 px-4 pt-2 pb-3 w-fit text-white rounded-md font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+            >
+            Apply
+            </Link>
         </div>
 
     </SubPageLayout>

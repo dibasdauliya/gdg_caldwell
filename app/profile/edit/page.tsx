@@ -70,6 +70,7 @@ export default function EditProfile() {
       try {
         await setDoc(doc(firebaseDB, "users", user.uid), result.data);
         toast.success("Profile updated successfully!");
+        router.push("/profile");
       } catch (error) {
         console.error("Error updating profile:", error);
         toast.error("Failed to update profile. Please try again.");
