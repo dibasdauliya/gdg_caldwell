@@ -10,6 +10,7 @@ import { ProfileData } from "../utils/types";
 import { doc, getDoc } from "firebase/firestore";
 import Link from "next/link";
 import { signOut } from "firebase/auth";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function MyProfile() {
   const [user, userLoading, userErr] = useAuthState(auth);
@@ -149,14 +150,18 @@ export default function MyProfile() {
         <footer className="flex gap-3 items-center">
           <Link
             href="/apply"
-            className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 px-4 pt-2 pb-3 w-fit text-white rounded-md font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+            className={buttonVariants({
+              variant: "outline",
+            })}
           >
             Apply
           </Link>
 
           <Link
             href="/apply/status"
-            className="bg-gray-100 text-black relative block px-4 pt-2 pb-3 w-fit rounded-md font-medium"
+            className={`${buttonVariants({
+              variant: "secondary",
+            })}`}
           >
             View Status
           </Link>
