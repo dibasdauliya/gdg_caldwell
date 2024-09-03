@@ -6,8 +6,8 @@ import Image from "next/image";
 export default function Header() {
   return (
     <header className="bg-black text-white">
-      <Container className="flex justify-between items-center">
-        <Link href="/" className="text-center flex gap-1 items-center">
+      <Container className="flex flex-wrap gap-y-3 justify-center md:justify-between items-center">
+        <Link href="/" className="text-center flex flex-wrap justify-center gap-1 items-center">
           <Image
             src="/logo.png"
             width={80}
@@ -18,12 +18,12 @@ export default function Header() {
           <p>GDG On Campus: Caldwell University</p>
         </Link>
         <nav>
-          <ul className="flex gap-4 text-white">
+          <ul className="flex flex-wrap gap-y-2 gap-x-4 text-white">
             <li>
-              <Link href="/past-events">Past Events</Link>
+              <Link href="/upcoming-events">Upcoming Events</Link>
             </li>
             <li>
-              <Link href="/upcomming-events">Upcomming Events</Link>
+              <Link href="/past-events">Past Events</Link>
             </li>
             <li>
               <Link href="/apply">Apply</Link>

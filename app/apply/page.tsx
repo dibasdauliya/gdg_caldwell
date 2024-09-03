@@ -128,7 +128,7 @@ export default function ApplyPage() {
   };
 
   if (!user && !userLoading) {
-    router.push(`/sign-in/?next=${location.pathname}`);
+    router.push(`/sign-in`);
     return null;
   }
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <div className="h-[40rem] w-full flex md:items-center md:justify-center bg-black/[0.94] antialiased bg-grid-white/[0.02] relative overflow-hidden">
+    <div className="min-h-[40rem] pb-12 md:pb-0 w-full flex md:items-center md:justify-center bg-black/[0.94] antialiased bg-grid-white/[0.02] relative overflow-hidden">
       <div className="p-4 max-w-7xl  mx-auto relative z-10  w-full pt-20 md:pt-0 space-y-8">
         <Spotlight
           className="absolute -top-40 left-0 md:left-80 md:-top-20"
