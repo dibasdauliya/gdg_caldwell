@@ -42,6 +42,22 @@ export default function Statuspage() {
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error.message}</p>}
 
+            {!loading && !applicationsSnapshot?.docs.length && (
+              <CardSpotlight className="max-w-lg p-4 text-white relative z-30">
+                <div className="relative z-30">
+                  <p className="mb-3">
+                    You haven't applied for any positions yet.
+                  </p>
+                  <Link
+                    className={buttonVariants({ variant: "secondary" })}
+                    href="/apply"
+                  >
+                    Apply Now
+                  </Link>
+                </div>
+              </CardSpotlight>
+            )}
+
             {applicationsSnapshot?.docs.map((doc) => {
               const application = doc.data();
               return (
