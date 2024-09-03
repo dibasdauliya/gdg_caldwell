@@ -12,19 +12,9 @@ import { z } from "zod";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { toast, Toaster } from "react-hot-toast";
 import { LabelInputContainer } from "@/app/components/forms/label-input-container";
-
-const profileSchema = z.object({
-  firstname: z.string().min(1, "First name is required"),
-  lastname: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  classyear: z.string().min(1, "Class year is required"),
-  linkedin: z.string().optional(),
-  github: z.string().optional(),
-  bio: z.string().optional(),
-  major: z.string().min(1, "Major is required"),
-});
-
-type ProfileData = z.infer<typeof profileSchema>;
+import SubPageLayout from "@/app/components/sub-page-layout";
+import { useRouter } from "next/navigation";
+import { ProfileData, profileSchema } from "@/app/utils/types";
 
 export default function EditProfile() {
   const [user, userLoading, userErr] = useAuthState(auth);
@@ -38,6 +28,7 @@ export default function EditProfile() {
     major: "",
     bio: "",
   });
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -88,13 +79,11 @@ export default function EditProfile() {
 
   if (userLoading) return <div>Loading...</div>;
   if (userErr) return <div>Error: {userErr.message}</div>;
-  if (!user) return <div>Please sign in to edit your profile.</div>;
+  if (!user) return router.push("/sign-in");
 
   return (
-    <>
-      <Header />
-      <main>
-        <Container>
+    <SubPageLayout>
+      <main className="relative z-30">
           <h1 className="text-3xl font-bold mt-8">Edit Profile</h1>
 
           <form className="my-8 w-96" onSubmit={handleSubmit}>
@@ -208,10 +197,9 @@ export default function EditProfile() {
               <BottomGradient />
             </button>
           </form>
-        </Container>
       </main>
       <Toaster />
-    </>
+    </SubPageLayout>
   );
 }
 
