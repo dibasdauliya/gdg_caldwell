@@ -21,7 +21,6 @@ export default function SignInButton() {
 
       // console.log("profileRef", profile.exists())
 
-      // get email
       if (result.user.email?.split("@")[1] !== "caldwell.edu") {
         alert("Please use your Caldwell University email address to sign in.");
         // sign out
@@ -31,7 +30,7 @@ export default function SignInButton() {
       }
 
       if (profile.exists()) {
-        router.push("/profile/edit");
+        router.push("/profile");
       } else {
         router.push(`/profile/edit`);
       }

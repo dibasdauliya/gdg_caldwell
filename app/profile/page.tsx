@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { ProfileData } from "../utils/types";
 import { doc, getDoc } from "firebase/firestore";
 import Link from "next/link";
+import { signOut } from "firebase/auth";
 
 export default function MyProfile() {
   const [user, userLoading, userErr] = useAuthState(auth);
@@ -50,18 +51,23 @@ export default function MyProfile() {
   return (
     <SubPageLayout>
       <div className="relative z-30 pb-8">
-        <header className="flex gap-2 flex-wrap justify-between items-center max-w-2xl mt-8">
-          <h1 className="text-3xl font-bold">
-            Profile
-            <small>
-              <button
-                onClick={() => router.push("/profile/edit")}
-                className="text-sm text-blue-500 hover:text-blue-600 ml-3"
-              >
-                Edit
-              </button>
-            </small>
-          </h1>
+        <header className="max-w-2xl mt-8">
+          <h1 className="text-3xl font-bold">Profile</h1>
+          <p className="text-sm flex items-center gap-2 mt-3">
+            <Link
+              href="/profile/edit"
+              className="text-sm text-blue-500 hover:text-blue-600"
+            >
+              Edit
+            </Link>{" "}
+            <span className="text-gray-400">&middot;</span>{" "}
+            <button
+              onClick={() => signOut(auth)}
+              className="text-sm text-red-500 hover:text-red-600"
+            >
+              Sign Out
+            </button>
+          </p>
 
           {/* <Link href='/apply' className={buttonVariants({ variant: "secondary" })}>
             Apply
