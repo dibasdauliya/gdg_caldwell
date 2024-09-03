@@ -24,6 +24,8 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { Checkbox } from "@/components/ui/checkbox";
+import Footer from "../components/footer";
+import FollowInsta from "../components/follow-insta";
 
 const applicationSchema = z.object({
   position: z
@@ -276,6 +278,7 @@ export default function ApplyPage() {
               Submit Application
             </button>
           </form>
+      <FollowInsta />
         </Container>
       </main>
       <Toaster />

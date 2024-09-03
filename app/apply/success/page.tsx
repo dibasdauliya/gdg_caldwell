@@ -1,4 +1,5 @@
 import Container from "@/app/components/container";
+import FollowInsta from "@/app/components/follow-insta";
 import Header from "@/app/components/header";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
@@ -34,6 +35,8 @@ export default function Successpage() {
               View Application Status
             </Link>
           </p>
+
+          <FollowInsta />
         </Container>
       </main>
     </>
