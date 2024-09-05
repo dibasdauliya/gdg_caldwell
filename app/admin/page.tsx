@@ -6,10 +6,38 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firebaseDB } from "../utils/db";
 import { collection, getDocs } from "firebase/firestore";
 
+// Define types for user and application data
+interface User {
+  uid: string;
+  firstname: string;
+  lastname: string;
+  bio: string;
+  email: string;
+  classyear: string;
+  major: string;
+  createdAt: { seconds: number; nanoseconds: number };
+}
+
+interface Application {
+  userId: string;
+  position: string;
+  createdAt: { seconds: number; nanoseconds: number };
+  status: string;
+  whyGdg: string;
+  positionQues?: { [key: string]: string };
+  terms1: boolean;
+  userData?: User;
+}
+
+interface PageData {
+  users: User[];
+  positions: Application[];
+}
+
 export default function AdminPage() {
   const [user, userLoading, userErr] = useAuthState(auth);
 
-  const [pageData, setPageData] = useState({
+  const [pageData, setPageData] = useState<PageData>({
     users: [],
     positions: [],
   });
@@ -19,26 +47,25 @@ export default function AdminPage() {
       try {
         const usersCollectionRef = collection(firebaseDB, "users");
         const usersSnapshot = await getDocs(usersCollectionRef);
-        // const usersList = usersSnapshot.docs.map((doc) => doc.data());
-        const usersList = usersSnapshot.docs.map((doc) => ({
+        const usersList: User[] = usersSnapshot.docs.map((doc) => ({
           uid: doc.id,
           ...doc.data(),
-        }));
+        })) as User[];
 
         const applicationsCollectionRef = collection(
           firebaseDB,
           "applications"
         );
         const applicationsSnapshot = await getDocs(applicationsCollectionRef);
-        const applicationsList = applicationsSnapshot.docs.map((doc) => ({
-          ...doc.data(),
-          userData: usersList.find((user) => user.uid === doc.data().userId),
-        }));
+        const applicationsList: Application[] = applicationsSnapshot.docs.map(
+          (doc) => ({
+            ...doc.data(),
+            userData: usersList.find((user) => user.uid === doc.data().userId),
+          })
+        ) as Application[];
 
         setPageData({
-          // @ts-ignore
           users: usersList,
-          // @ts-ignore
           positions: applicationsList,
         });
       } catch (error) {
@@ -57,27 +84,18 @@ export default function AdminPage() {
           Applied positions: {pageData.positions.length}
         </h1>
 
-        {/* <pre className="max-w-4xl overflow-auto whitespace-pre-wrap">
-          {JSON.stringify(pageData.positions, null, 2)}
-        </pre> */}
-
         <div className="space-y-4">
-          {pageData.positions.map((user) => (
+          {pageData.positions.map((application) => (
             <div
-              key={user.userId}
+              key={application.userId}
               className="bg-gray-100 p-4 rounded-md space-y-2"
             >
               <h2 className="text-lg font-semibold">
-                Position: {user.position}
+                Position: {application.position}
               </h2>
               <p>
                 Applied on{" "}
-                {/* {new Date(user.createdAt.seconds * 1000).toLocaleDateString({
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })} */}
-                {new Date(user.createdAt.seconds * 1000).toLocaleString(
+                {new Date(application.createdAt.seconds * 1000).toLocaleString(
                   "en-US",
                   {
                     year: "numeric",
@@ -90,26 +108,27 @@ export default function AdminPage() {
                   }
                 )}
               </p>
-              <p>{user.userId}</p>
+              <p>{application.userId}</p>
               <p>
-                <pre>{JSON.stringify(user.userData, null, 2)}</pre>
+                <pre>{JSON.stringify(application.userData, null, 2)}</pre>
               </p>
-              {/* <div>{getUserById(user.userId)}</div> */}
-              <p>Status: {user.status}</p>
+              <p>Status: {application.status}</p>
               <div>
                 <p className="font-semibold">Why GDG?</p>
-                <p>{user.whyGdg}</p>
+                <p>{application.whyGdg}</p>
               </div>
               <div>
                 Position question
                 <p className="font-semibold">
-                  {user?.positionQues && Object.keys(user?.positionQues)[0]}
+                  {application?.positionQues &&
+                    Object.keys(application?.positionQues)[0]}
                 </p>
                 <p>
-                  {user?.positionQues && Object.values(user?.positionQues)[0]}
+                  {application?.positionQues &&
+                    Object.values(application?.positionQues)[0]}
                 </p>
               </div>
-              <p>Is term1 accepted? {user.terms1 ? "Yes" : "No"}</p>
+              <p>Is term1 accepted? {application.terms1 ? "Yes" : "No"}</p>
             </div>
           ))}
         </div>
@@ -136,13 +155,6 @@ export default function AdminPage() {
             </div>
           ))}
         </div>
-
-        {/* <details open={false}>
-          <summary>view all</summary>
-          <pre className="max-w-4xl">
-            {JSON.stringify(pageData.users, null, 2)}
-          </pre>
-        </details> */}
       </section>
     </SubPageLayout>
   );
