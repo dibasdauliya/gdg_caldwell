@@ -122,7 +122,7 @@ export default function AdminPage() {
           </button>
 
           {pageData.positions.map((application) => (
-            <div>
+            <div key={application.userId}>
               <pre>
                 {convertUserDataToCSV(
                   application.userData,

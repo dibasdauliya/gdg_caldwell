@@ -162,7 +162,7 @@ export default function EditProfile() {
             />
 
             <p className="text-sm text-gray-500">
-              We'll use this to contact you for events and opportunities.
+              We&apos;ll use this to contact you for events and opportunities.
             </p>
           </LabelInputContainer>
 
