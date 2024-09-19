@@ -25,6 +25,8 @@ export default function MyProfile() {
     github: "",
     major: "",
     bio: "",
+    studentID: "",
+    phoneNumber: "",
   });
 
   useEffect(() => {
@@ -107,6 +109,25 @@ export default function MyProfile() {
               {profileData.classyear}
             </p>
           </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Student ID
+            </label>
+            <p className="mt-1 text-sm text-gray-900">
+              {profileData.studentID}
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Phone Number
+            </label>
+            <p className="mt-1 text-sm text-gray-900">
+              {profileData.phoneNumber}
+            </p>
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700">
               LinkedIn

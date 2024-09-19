@@ -77,6 +77,35 @@ export default function AdminPage() {
     fetchUserData();
   }, []);
 
+  const convertUserDataToCSV = (userData?: User, position?: string) => {
+    if (!userData || position?.toLowerCase().trim() === "member") return "";
+    return `${userData.firstname.trim()},${userData.lastname.trim()},${userData.email.trim()}`;
+  };
+
+  const generateCSVContent = () => {
+    const headers = "FirstName,LastName,Email\n";
+    const rows = pageData.positions
+      .map((application) =>
+        convertUserDataToCSV(application.userData, application.position)
+      )
+      .filter((row) => row !== "")
+      .join("\n");
+    return headers + rows;
+  };
+
+  const downloadCSV = () => {
+    const csvContent = generateCSVContent();
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "userdata.csv");
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <SubPageLayout className="relative z-30">
       <section>
@@ -85,6 +114,24 @@ export default function AdminPage() {
         </h1>
 
         <div className="space-y-4">
+          <button
+            onClick={downloadCSV}
+            className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"
+          >
+            Download CSV
+          </button>
+
+          {pageData.positions.map((application) => (
+            <div>
+              <pre>
+                {convertUserDataToCSV(
+                  application.userData,
+                  application.position
+                )}
+              </pre>
+            </div>
+          ))}
+
           {pageData.positions.map((application) => (
             <div
               key={application.userId}
