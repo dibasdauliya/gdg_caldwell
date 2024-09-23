@@ -1,12 +1,19 @@
-import React from "react";
-import Container from "./container";
+import React, { useState } from "react";
+import Container from "./container"; // Make sure this is correctly imported
 import Link from "next/link";
 import Image from "next/image";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-export default function Header() {
+const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <header className="bg-black text-white">
-      <Container className="flex flex-wrap gap-y-3 justify-center md:justify-between items-center">
+      <Container className="flex flex-wrap gap-y-3 justify-between items-center">
         <Link href="/" className="text-center flex flex-wrap justify-center gap-1 items-center">
           <Image
             src="/logo.png"
@@ -17,8 +24,17 @@ export default function Header() {
           />
           <p>GDG On Campus: Caldwell University</p>
         </Link>
-        <nav>
-          <ul className="flex flex-wrap gap-y-2 gap-x-4 text-white">
+
+        <button
+          className="block md:hidden text-white ml-auto"
+          onClick={toggleMenu}
+          aria-label="Toggle navigation"
+        >
+          {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+
+        <nav className={`md:block ${isOpen ? 'block' : 'hidden'} w-full md:w-auto`}>
+          <ul className="flex flex-col md:flex-row gap-y-2 gap-x-4 text-white">
             <li>
               <Link href="/upcoming-events">Upcoming Events</Link>
             </li>
@@ -39,4 +55,6 @@ export default function Header() {
       </Container>
     </header>
   );
-}
+};
+
+export default Header;

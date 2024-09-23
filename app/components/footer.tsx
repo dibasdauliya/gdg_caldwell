@@ -30,6 +30,9 @@ export default function Footer() {
           <Link href="/apply" className="underline">
             Apply
           </Link>
+          <Link href="/about" className="underline">
+          About Us
+          </Link>
         </p>
       </Container>
     </footer>
