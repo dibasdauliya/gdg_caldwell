@@ -6,6 +6,7 @@ import Footer from "./components/footer";
 import { client } from "@/sanity/lib/client";
 import { UpcomingEventType } from "@/sanity/schema-types";
 
+
 export const revalidate = 0;
 
 async function getUpcomingEvents(): Promise<UpcomingEventType[]> {
