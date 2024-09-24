@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState } from "react";
-import Container from "./container"; // Make sure this is correctly imported
 import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Container from "./container";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +16,10 @@ const Header: React.FC = () => {
   return (
     <header className="bg-black text-white">
       <Container className="flex flex-wrap gap-y-3 justify-between items-center">
-        <Link href="/" className="text-center flex flex-wrap justify-center gap-1 items-center">
+        <Link
+          href="/"
+          className="text-center flex flex-wrap justify-center gap-1 items-center"
+        >
           <Image
             src="/logo.png"
             width={80}
@@ -33,7 +38,9 @@ const Header: React.FC = () => {
           {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
 
-        <nav className={`md:block ${isOpen ? 'block' : 'hidden'} w-full md:w-auto`}>
+        <nav
+          className={`md:block ${isOpen ? "block" : "hidden"} w-full md:w-auto`}
+        >
           <ul className="flex flex-col md:flex-row gap-y-2 gap-x-4 text-white">
             <li>
               <Link href="/upcoming-events">Upcoming Events</Link>
