@@ -14,6 +14,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { push, ref, set } from "firebase/database";
 import { realtimeDB } from "../utils/db";
 
+// @ts-ignore
 export default function FormComponent({ events, email }) {
   const [formData, setFormData] = useState({
     email: email || "",
@@ -31,6 +32,7 @@ export default function FormComponent({ events, email }) {
     }
 
     try {
+      // @ts-ignore
       const workRef = ref(realtimeDB, `events/${formData.selectedEvent._id}`);
       const newWorkRef = push(workRef);
 
@@ -39,6 +41,7 @@ export default function FormComponent({ events, email }) {
         learned: formData.learned,
         url: formData.url,
         timestamp: Date.now(),
+        // @ts-ignore
         event: formData.selectedEvent.title,
       });
 
@@ -64,6 +67,7 @@ export default function FormComponent({ events, email }) {
   };
 
   const handleSelectChange = (value: string) => {
+    // @ts-ignore
     const selectedEvent = events.find((event) => event.title === value);
     setFormData({ ...formData, selectedEvent });
   };
@@ -77,6 +81,7 @@ export default function FormComponent({ events, email }) {
             <SelectValue placeholder="Select a event" />
           </SelectTrigger>
           <SelectContent>
+            {/*  @ts-ignore */}
             {events.map((event) => (
               <SelectItem key={event._id} value={event.title}>
                 {event.title}

@@ -16,11 +16,6 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
-
-interface PostLinksProps {
-  upcomingEvents: UpcomingEventType[];
-}
 
 interface Submission {
   id: string;
@@ -29,7 +24,7 @@ interface Submission {
   email: string;
 }
 
-const PostLinks: React.FC<PostLinksProps> = () => {
+const PostLinks: React.FC = () => {
   const [user, userLoading, userErr] = useAuthState(auth);
   const [pageData, setPageData] = useState<UpcomingEventType[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<UpcomingEventType | null>(

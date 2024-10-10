@@ -11,10 +11,6 @@ import Container from "../components/container";
 import FormComponent from "./form";
 import { onValue, ref } from "firebase/database";
 
-interface PostLinksProps {
-  upcomingEvents: UpcomingEventType[];
-}
-
 interface SubmittedWork {
   email: string;
   learned: string;
@@ -23,7 +19,7 @@ interface SubmittedWork {
   event: string;
 }
 
-const PostLinks: React.FC<PostLinksProps> = () => {
+const PostLinks: React.FC = () => {
   const [user, userLoading, userErr] = useAuthState(auth);
   const [pageData, setPageData] = useState<UpcomingEventType[]>([]);
   const router = useRouter();
