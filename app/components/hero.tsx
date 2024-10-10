@@ -29,12 +29,12 @@ export default function HeroSection() {
           </h2>
         </header>
 
-        <div className="flex gap-6 justify-center">
+        {/* <div className="flex gap-6 justify-center">
           <AnimatedTooltips />
           <small className="text-white mt-5">
-            <a href="">+ TBD</a>
+            <Link href="/team">+ 45 others</Link>
           </small>
-        </div>
+        </div> */}
 
         <p className="mt-4 font-normal text-base text-neutral-300 max-w-lg text-center mx-auto">
           Join us if you are interested in learning more about technologies and

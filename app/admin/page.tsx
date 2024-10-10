@@ -78,15 +78,15 @@ export default function AdminPage() {
   }, []);
 
   const convertUserDataToCSV = (userData?: User, position?: string) => {
-    if (!userData || position?.toLowerCase().trim() === "member") return "";
-    return `${userData.firstname.trim()},${userData.lastname.trim()},${userData.email.trim()}`;
+    // if (!userData || position?.toLowerCase().trim() !== "member") return "";
+    return `${userData.email.trim()},${userData.firstname.trim()},${userData.lastname.trim()}`;
   };
 
   const generateCSVContent = () => {
-    const headers = "FirstName,LastName,Email\n";
-    const rows = pageData.positions
+    const headers = "Email,FirstName,LastName\n";
+    const rows = pageData.users
       .map((application) =>
-        convertUserDataToCSV(application.userData, application.position)
+        convertUserDataToCSV(application, application.position)
       )
       .filter((row) => row !== "")
       .join("\n");
@@ -121,13 +121,10 @@ export default function AdminPage() {
             Download CSV
           </button>
 
-          {pageData.positions.map((application) => (
+          {pageData.users.map((application) => (
             <div key={application.userId}>
               <pre>
-                {convertUserDataToCSV(
-                  application.userData,
-                  application.position
-                )}
+                {convertUserDataToCSV(application, application.position)}
               </pre>
             </div>
           ))}
