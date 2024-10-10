@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/e1",
+      "destination": "https://gdg.community.dev/events/details/google-gdg-on-campus-caldwell-university-caldwell-united-states-presents-info-session-amp-git-workshop/",
+      "permanent": true
+    }
+  ]
+}
