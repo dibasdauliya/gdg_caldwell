@@ -87,7 +87,7 @@ export default function FormComponent({ events, email }) {
         <Label htmlFor="event">Event</Label>
         <Select onValueChange={handleSelectChange}>
           <SelectTrigger id="event">
-            <SelectValue placeholder="Select a event" />
+            <SelectValue placeholder="Select an event" />
           </SelectTrigger>
           <SelectContent>
             {/*  @ts-ignore */}
