@@ -22,6 +22,14 @@ export default function Footer() {
           <Link href="/about" className="underline">
             About Us
           </Link>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://discord.gg/JJeyeRsGZK"
+            className="underline"
+          >
+            Join Discord
+          </a>
         </p>
       </Container>
     </footer>
