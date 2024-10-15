@@ -45,6 +45,15 @@ export default function FormComponent({ events, email }) {
         event: formData.selectedEvent.title,
       });
 
+      alert("Work submitted successfully!");
+
+      setFormData({
+        email: "",
+        learned: "",
+        url: "",
+        selectedEvent: null,
+      });
+
       // setFormData((prevData) => ({
       //   ...prevData,
       //   email: "",
