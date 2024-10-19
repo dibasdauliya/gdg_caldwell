@@ -6,6 +6,11 @@
       "permanent": true
     },
     {
+      "source": "/e2",
+      "destination": "https://gdg.community.dev/events/details/google-gdg-on-campus-caldwell-university-caldwell-united-states-presents-google-sites-workshop/",
+      "permanent": true
+    },
+    {
       "source": "/discord",
       "destination": "https://discord.gg/JJeyeRsGZK",
       "permanent": true
