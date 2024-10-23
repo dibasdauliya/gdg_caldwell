@@ -11,6 +11,11 @@
       "permanent": true
     },
     {
+      "source": "/e2-content",
+      "destination": "https://docs.google.com/document/d/14K0rwjJIrYbeY4kkHrQxwMHg40zDnWfLTCii4jksdpg/edit?usp=sharing",
+      "permanent": true
+    },
+    {
       "source": "/discord",
       "destination": "https://discord.gg/JJeyeRsGZK",
       "permanent": true
