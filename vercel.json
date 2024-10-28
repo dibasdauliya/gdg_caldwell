@@ -11,6 +11,11 @@
       "permanent": true
     },
     {
+      "source": "/e3",
+      "destination": "https://gdg.community.dev/events/details/google-gdg-on-campus-caldwell-university-caldwell-united-states-presents-html-and-css-workshop/",
+      "permanent": true
+    },
+    {
       "source": "/e2-content",
       "destination": "https://docs.google.com/document/d/14K0rwjJIrYbeY4kkHrQxwMHg40zDnWfLTCii4jksdpg/edit?usp=sharing",
       "permanent": true
