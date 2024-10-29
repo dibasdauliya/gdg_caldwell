@@ -21,8 +21,18 @@
       "permanent": true
     },
     {
+      "source": "/e3-content",
+      "destination": "https://docs.google.com/document/d/1AyUSU5MKxsFAjPBguc0_Wsnkn-w8PZd6R9ja_k30SJw/edit?usp=sharing",
+      "permanent": true
+    },
+    {
       "source": "/discord",
       "destination": "https://discord.gg/JJeyeRsGZK",
+      "permanent": true
+    },
+    {
+      "source": "/join",
+      "destination": "https://gdg.community.dev/gdg-on-campus-caldwell-university-caldwell-united-states/",
       "permanent": true
     }
   ]
