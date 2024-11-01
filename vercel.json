@@ -26,6 +26,11 @@
       "permanent": true
     },
     {
+      "source": "/e4",
+      "destination": "https://gdg.community.dev/events/details/google-gdg-on-campus-caldwell-university-caldwell-united-states-presents-build-project-using-html-amp-css/",
+      "permanent": true
+    },
+    {
       "source": "/discord",
       "destination": "https://discord.gg/JJeyeRsGZK",
       "permanent": true
