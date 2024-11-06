@@ -44,6 +44,11 @@
       "source": "/join",
       "destination": "https://gdg.community.dev/gdg-on-campus-caldwell-university-caldwell-united-states/",
       "permanent": true
+    },
+    {
+      "source": "/dibass1",
+      "destination": "https://docs.google.com/document/d/1nfX_qqYMlXrbylP8_Kd8SmmI2wPYlEnuZ7-L9W9NwkI/edit?usp=sharing",
+      "permanent": true
     }
   ]
 }
