@@ -31,6 +31,11 @@
       "permanent": true
     },
     {
+      "source": "/e4-content",
+      "destination": "https://docs.google.com/document/d/1R2WqSDUo3qIyNmBEzNXEnImz3wIxyhDOWXZOOrFlBys/edit?usp=sharing",
+      "permanent": true
+    },
+    {
       "source": "/discord",
       "destination": "https://discord.gg/JJeyeRsGZK",
       "permanent": true
