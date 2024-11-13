@@ -54,6 +54,11 @@
       "source": "/e5",
       "destination": "https://gdg.community.dev/events/details/google-gdg-on-campus-caldwell-university-caldwell-united-states-presents-build-project-using-html-and-tailwind-css/",
       "permanent": true
+    },
+    {
+      "source": "/e5-content",
+      "destination": "https://docs.google.com/document/d/1MKOr9LNLgmeNiQTNxlrJkI_-hLJxT0bzmTQbwYRd8sQ/edit?usp=sharing",
+      "permanent": true
     }
   ]
 }
