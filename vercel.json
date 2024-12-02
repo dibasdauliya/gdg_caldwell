@@ -59,6 +59,11 @@
       "source": "/e6",
       "destination": "https://gdg.community.dev/events/details/google-gdg-on-campus-caldwell-university-caldwell-united-states-presents-html-website-coding-challenge/",
       "permanent": true
+    },
+    {
+      "source": "/e7",
+      "destination": "https://gdg.community.dev/events/details/google-gdg-on-campus-caldwell-university-caldwell-united-states-presents-canva-workshop/",
+      "permanent": true
     }
   ]
 }
