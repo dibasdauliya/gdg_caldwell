@@ -64,6 +64,10 @@
       "source": "/e7",
       "destination": "https://gdg.community.dev/events/details/google-gdg-on-campus-caldwell-university-caldwell-united-states-presents-canva-workshop/",
       "permanent": true
+    },
+    {
+      "source": "/e7-content",
+      "destination": "https://docs.google.com/document/d/1KvhlJT5UcLEI1YOJtepUg7xsrhB7ixe4OeBG9GqpGVo/edit?tab=t.0"
     }
   ]
 }
