@@ -125,19 +125,21 @@ export default function AdminPage() {
             </div>
           ))}
 
-          {pageData.positions.map((application) => (
-            <div
-              key={application.userId}
-              className="bg-gray-100 p-4 rounded-md space-y-2"
-            >
-              <h2 className="text-lg font-semibold">
-                Position: {application.position}
-              </h2>
-              <p>
-                Applied on{" "}
-                {new Date(application.createdAt.seconds * 1000).toLocaleString(
-                  "en-US",
-                  {
+          {pageData.positions
+            .sort((a, b) => b.createdAt.seconds - a.createdAt.seconds)
+            .map((application) => (
+              <div
+                key={application.userId}
+                className="bg-gray-100 p-4 rounded-md space-y-2"
+              >
+                <h2 className="text-lg font-semibold">
+                  Position: {application.position}
+                </h2>
+                <p>
+                  Applied on{" "}
+                  {new Date(
+                    application.createdAt.seconds * 1000
+                  ).toLocaleString("en-US", {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
@@ -145,32 +147,31 @@ export default function AdminPage() {
                     minute: "2-digit",
                     second: "2-digit",
                     hour12: true,
-                  }
-                )}
-              </p>
-              <p>{application.userId}</p>
-              <p>
-                <pre>{JSON.stringify(application.userData, null, 2)}</pre>
-              </p>
-              <p>Status: {application.status}</p>
-              <div>
-                <p className="font-semibold">Why GDG?</p>
-                <p>{application.whyGdg}</p>
-              </div>
-              <div>
-                Position question
-                <p className="font-semibold">
-                  {application?.positionQues &&
-                    Object.keys(application?.positionQues)[0]}
+                  })}
                 </p>
+                <p>{application.userId}</p>
                 <p>
-                  {application?.positionQues &&
-                    Object.values(application?.positionQues)[0]}
+                  <pre>{JSON.stringify(application.userData, null, 2)}</pre>
                 </p>
+                <p>Status: {application.status}</p>
+                <div>
+                  <p className="font-semibold">Why GDG?</p>
+                  <p>{application.whyGdg}</p>
+                </div>
+                <div>
+                  Position question
+                  <p className="font-semibold">
+                    {application?.positionQues &&
+                      Object.keys(application?.positionQues)[0]}
+                  </p>
+                  <p>
+                    {application?.positionQues &&
+                      Object.values(application?.positionQues)[0]}
+                  </p>
+                </div>
+                <p>Is term1 accepted? {application.terms1 ? "Yes" : "No"}</p>
               </div>
-              <p>Is term1 accepted? {application.terms1 ? "Yes" : "No"}</p>
-            </div>
-          ))}
+            ))}
         </div>
       </section>
 
